@@ -55,7 +55,7 @@ outfile     <-
 
 # stock_name <- "smn-dp"
 stock_name <- "fle-2732" #
-stock_name <- "Mull_bar_AD"
+stock_name <- "cod-rock"
 
 cdat <-
   read.csv(
@@ -134,7 +134,10 @@ compare_outputs %>%
   ggplot(aes(year, value, color = code, linetype = code)) +
   geom_line() +
   facet_wrap(~variable, scales = "free_y") +
-  scale_y_continuous(limits = c(0,NA))
+  scale_y_continuous(limits = c(0,NA)) +
+  scale_color_discrete(labels = c("Dan's CMSY", "Official CMSY")) +
+  scale_linetype(labels = c("Dan's CMSY", "Official CMSY"))
+
 
 
 

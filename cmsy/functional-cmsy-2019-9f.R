@@ -210,7 +210,7 @@ stocks      <- NA
 # If the input files contain more than one stock, specify below the stock to be analyzed
 # If the line below is commented out (#), all stocks in the input file will be analyzed
 stocks <- "fle-2732" #
-stocks <- "Mull_bar_AD"
+stocks <- "cod-rock"
 #-----------------------------------------
 # General settings for the analysis ----
 #-----------------------------------------
