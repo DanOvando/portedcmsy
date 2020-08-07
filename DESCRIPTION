@@ -1,0 +1,44 @@
+Package: portedcmsy
+Type: Package
+Title: A Functional Port of of cmsy (https://github.com/SISTA16/cmsy)
+Version: 1.0
+Date: 2020-08-06
+Authors@R: 
+    person(given = "Dan",
+           family = "Ovando",
+           role = c("aut", "cre"),
+           email = "danovan@uw.edu",
+           comment = c(ORCID = "0000-0003-2120-7345"))
+Maintainer@R: 
+    person(given = "Dan",
+           family = "Ovando",
+           role = c("aut", "cre"),
+           email = "danovan@uw.edu",
+           comment = c(ORCID = "0000-0003-2120-7345"))
+Description: A minimimal and functional port of cmsy. Only the catch-only version is supported. Only difference is that the internal schaefer model has been replaced with a c++ version to speed things up
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp,
+    R2jags,
+    coda,
+    parallel,
+    foreach,
+    doParallel,
+    gplots,
+    mvtnorm,
+    snpar,
+    knitr,
+    tinytex,
+    magrittr,
+    dplyr,
+    purrr,
+    tidyr,
+    stringr
+Suggests: 
+    here
