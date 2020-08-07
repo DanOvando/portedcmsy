@@ -171,7 +171,7 @@ mvn   <- function(n,mean.log.r,sd.log.r,mean.log.k,sd.log.k) {
   covar.log.rk[2,2] <- sd.log.k^2               # position [2,2] is variance of log.k
   covar.log.rk[1,2] = covar.log.rk[2,1] = cov.log.rk     # positions [1,2] and [2,1] are correlations
   mu.log.rk  <- (c(mean.log.r,mean.log.k))      # vector of log.means
-  mvn.log.rk <- rmvnorm(n,mean=mu.log.rk,sigma=covar.log.rk,method="svd")
+  mvn.log.rk <- mvtnorm::rmvnorm(n,mean=mu.log.rk,sigma=covar.log.rk,method="svd")
   return(mvn.log.rk)
 }
 
@@ -2046,7 +2046,7 @@ set.seed(42)
         # Get covariance of the 2 vectors
         cov.kobe = cov(cbind(log.ffmsy, log.bbmsy))
         # Generate 10000 new random deviates from a MVN
-        log.kobe.mvn = rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
+        log.kobe.mvn = mvtnorm::rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
         kobe.mvn = exp(log.kobe.mvn)
         # Generate 10000 new random deviates from a MVN
         x.F_Fmsy = exp(log.kobe.mvn[, 1])
@@ -2995,7 +2995,7 @@ set.seed(42)
         # Get covariance of the 2 vectors
         cov.kobe = cov(cbind(log.ffmsy, log.bbmsy))
         # Generate 10000 new random deviates from a MVN
-        log.kobe.mvn = rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
+        log.kobe.mvn = mvtnorm::rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
         kobe.mvn = exp(log.kobe.mvn)
         # Generate 10000 new random deviates from a MVN
         x.F_Fmsy = exp(log.kobe.mvn[, 1])

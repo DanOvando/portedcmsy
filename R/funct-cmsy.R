@@ -1960,7 +1960,7 @@ funct_cmsy <- function(catches = NA,
         # Get covariance of the 2 vectors
         cov.kobe = cov(cbind(log.ffmsy, log.bbmsy))
         # Generate 10000 new random deviates from a MVN
-        log.kobe.mvn = rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
+        log.kobe.mvn = mvtnorm::rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
         kobe.mvn = exp(log.kobe.mvn)
         # Generate 10000 new random deviates from a MVN
         x.F_Fmsy = exp(log.kobe.mvn[, 1])
@@ -2929,7 +2929,7 @@ funct_cmsy <- function(catches = NA,
         # Get covariance of the 2 vectors
         cov.kobe = cov(cbind(log.ffmsy, log.bbmsy))
         # Generate 10000 new random deviates from a MVN
-        log.kobe.mvn = rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
+        log.kobe.mvn = mvtnorm::rmvnorm(10000 , mean = mu.kobe, sigma = cov.kobe)
         kobe.mvn = exp(log.kobe.mvn)
         # Generate 10000 new random deviates from a MVN
         x.F_Fmsy = exp(log.kobe.mvn[, 1])
