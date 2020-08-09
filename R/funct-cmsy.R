@@ -3510,8 +3510,6 @@ funct_cmsy <- function(catches = NA,
 
   stopCluster(cl)
 
-  stopImplicitCluster()
-
   return(output)
 
 }
