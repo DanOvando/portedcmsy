@@ -70,6 +70,8 @@ library(here)
 
 library(portedcmsy)
 
+set.seed(84)
+
 FullSchaefer <-
   F    # initialize variable; automatically set to TRUE if enough abundance data are available
 
@@ -140,11 +142,11 @@ ported_cmsy <- portedcmsy::funct_cmsy(catches = cdat$ct / 1000,
 #> startbio= 0.5 0.85 expert , intbio= 2010 0.01 0.4 default , endbio= 0.01 0.1 default 
 #> First Monte Carlo filtering of r-k space with  20000  points...
 #> 
-#> Found  188  viable trajectories for 184  r-k pairs
+#> Found  180  viable trajectories for 178  r-k pairs
 #> Repeating analysis with more points...
 #> Attempt  1  of  3  with  20000  additional points... 
 #> 
-#> Found altogether 528  viable trajectories for 514  r-k pairs
+#> Found altogether 578  viable trajectories for 560  r-k pairs
 port_time <- Sys.time() - a
 
 write_rds(ported_cmsy, "ported_cmsy.rds")
@@ -171,11 +173,11 @@ source(here("cmsy","functional-cmsy-2019-9f.R"))
 #> startbio= 0.5 0.85 expert , intbio= 2010 0.01 0.4 default , endbio= 0.01 0.1 default
 #> First Monte Carlo filtering of r-k space with  20000  points...
 #> 
-#> Found  172  viable trajectories for 167  r-k pairs
+#> Found  201  viable trajectories for 200  r-k pairs
 #> Repeating analysis with more points...
 #> Attempt  1  of  3  with  20000  additional points... 
 #> 
-#> Found altogether 622  viable trajectories for 600  r-k pairs
+#> Found altogether 592  viable trajectories for 579  r-k pairs
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" /><img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" /><img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" /><img src="man/figures/README-unnamed-chunk-2-4.png" width="100%" />
@@ -184,8 +186,8 @@ source(here("cmsy","functional-cmsy-2019-9f.R"))
 
 cmsy_time <- Sys.time() - a
 
-message(glue::glue("ported version cmsy runs {round(as.numeric(port_time)/as.numeric(cmsy_time))} times faster than official cmsy"))
-#> ported version cmsy runs 9 times faster than official cmsy
+message(glue::glue("ported version of cmsy runs {round(as.numeric(port_time)/as.numeric(cmsy_time))} times faster than official cmsy"))
+#> ported version of cmsy runs 11 times faster than official cmsy
 
 sista_output <-  output %>%
   mutate(b_bmsy = bt / bmsy) %>%

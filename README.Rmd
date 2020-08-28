@@ -48,6 +48,8 @@ library(here)
 
 library(portedcmsy)
 
+set.seed(84)
+
 FullSchaefer <-
   F    # initialize variable; automatically set to TRUE if enough abundance data are available
 
@@ -125,7 +127,7 @@ source(here("cmsy","functional-cmsy-2019-9f.R"))
 
 cmsy_time <- Sys.time() - a
 
-message(glue::glue("ported version cmsy runs {round(as.numeric(port_time)/as.numeric(cmsy_time))} times faster than official cmsy"))
+message(glue::glue("ported version of cmsy runs {round(as.numeric(port_time)/as.numeric(cmsy_time))} times faster than official cmsy"))
 
 sista_output <-  output %>%
   mutate(b_bmsy = bt / bmsy) %>%
