@@ -53,6 +53,7 @@
 #' @export
 #'
 funct_cmsy <- function(catches = NA,
+                       prior_catches = NA,
                        catch_years = NA,
                        start.yr = catch_years[1],
                        end.yr = catch_years[length(catch_years)],
@@ -280,6 +281,28 @@ funct_cmsy <- function(catches = NA,
         n.points = length(yr),
         bandwidth = bw
       )$y
+
+    if (all(!is.na(prior_catches))){
+
+      ogct <- ct
+
+      ogct.raw <- ct.raw
+
+      ct.raw   <- prior_catches[dplyr::between(catch_years, start.yr, end.yr)]
+
+      ct <-
+        ksmooth(
+          x = yr,
+          y = ct.raw,
+          kernel = "normal",
+          n.points = length(yr),
+          bandwidth = bw
+        )$y
+
+    }
+
+
+
     # initialize vectors for viable r, k, bt, and all in a matrix
     mdat.all    <-
       matrix(data = vector(), ncol = 2 + nyr + 1)
@@ -697,6 +720,10 @@ funct_cmsy <- function(catches = NA,
             "Increasing startbins, smoothing, catch and process error, and number of variability patterns \n"
           )
         }
+        if (all(!is.na(prior_catches))){
+          ct <- ogct
+        }
+
         MCA <-
           SchaeferMC(
             ri = ri1,
@@ -3132,6 +3159,14 @@ funct_cmsy <- function(catches = NA,
     # -------------------------------------
     ## Write results into csv outfile
     # write output -------------------------------------
+    #
+
+    if (all(!is.na(prior_catches))){
+
+      ct.raw <- ogct.raw
+
+    }
+
     if (retrosp.step == 0) {
       #account for retrospective analysis - write only the last result
 
